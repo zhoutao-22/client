@@ -57,7 +57,6 @@ import MaterialLotOQcManagerProperties from '@pages/Properties/mms/MaterialLotOQ
 import MobileHome from '@pages/Mobile/MobileHome';
 import ReceiveMLotByOrderProperties from '@pages/Properties/mms/mobile/ReceiveMLotByOrderProperties';
 import SplitMaterialLotProperties from '@pages/Properties/mms/mobile/SplitMaterialLotProperties';
-
 //vc
 import VcDeliveryOrderProperties from '@properties/vc/VcDeliveryOrderProperties';
 import VcApproveDocumentProperties from '@pages/Properties/vc/VcApproveDocumentProperties';
