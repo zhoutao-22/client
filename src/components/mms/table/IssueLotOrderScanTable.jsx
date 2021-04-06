@@ -32,7 +32,6 @@ export default class IssueLotOrderScanTable extends EntityScanViewTable {
     }
 
     createScannedNumber = () => {
-                    scanned.push(data) ;
         return <Tag color="#2db7f5" style={styles.tableButton} >{I18NUtils.getClientMessage(i18NCode.ScannedQty)}：{this.getScanedRows().length} </Tag>
     }
 
