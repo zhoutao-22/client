@@ -54,8 +54,10 @@ import EquipmentProperties from '@properties/rms/EquipmentProperties';
 import MaterialLotQcProperties from '@pages/Properties/mms/MaterialLotQcProperties';
 import MaterialLotIQcManagerProperties from '@pages/Properties/mms/MaterialLotIQcManagerProperties';
 import MaterialLotOQcManagerProperties from '@pages/Properties/mms/MaterialLotOQcManagerProperties';
+
 import MobileHome from '@pages/Mobile/MobileHome';
-import MobileProperties from '@pages/Properties/framework/MobileProperties'
+import ReceiveMLotByOrderProperties from '@pages/Properties/mms/mobile/ReceiveMLotByOrderProperties';
+import SplitMaterialLotProperties from '@pages/Properties/mms/mobile/SplitMaterialLotProperties';
 
 //vc
 import VcDeliveryOrderProperties from '@properties/vc/VcDeliveryOrderProperties';
