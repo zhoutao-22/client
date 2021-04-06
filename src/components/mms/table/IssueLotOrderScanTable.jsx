@@ -48,7 +48,8 @@ export default class IssueLotOrderScanTable extends EntityScanViewTable {
 
     IssueLot = () => {
         let self = this;
-        let materialLots = this.getScanned();
+        let materialLots = this.getScanedRows();
+        let doc = this.props.orderTable.getSingleSelectedRow();
         let flag = false;
         if (materialLots.length === 0) {
             NoticeUtils.showNotice(I18NUtils.getClientMessage(i18NCode.AddAtLeastOneRow));
@@ -66,7 +67,6 @@ export default class IssueLotOrderScanTable extends EntityScanViewTable {
             return ;
         }
         self.setState({loading: true});
-        let doc = this.props.orderTable.getSingleSelectedRow();
         let requestObject = {
             materialLots: materialLots,
             documentId:  doc.name,
