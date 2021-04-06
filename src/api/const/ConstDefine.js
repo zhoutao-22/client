@@ -13,7 +13,7 @@ const getServerAddress = () => {
     // 默认是local开发地址
     let serverAddress = "http://127.0.0.1:8080";
     if (ENV_MODE === EnvMode.Prod) {
-        serverAddress = "http://10.39.0.53:10010";
+        serverAddress = "http://10.39.0.50:10010";
     } else if (ENV_MODE === EnvMode.Dev) {
         serverAddress = "http://192.168.36.4:10010";
     } else if (ENV_MODE === EnvMode.Test) {
@@ -97,10 +97,12 @@ const UrlConstant = {
     MateiralLotIqcUrl: ModuleUrlConstant.MMS + "materialLotIQC",
     MMSIssueMLotByDocLineUrl: ModuleUrlConstant.MMS + "issueMLotByDocLine",
     MMSReturnMLotByDocUrl: ModuleUrlConstant.MMS + "returnMLotByDoc",
-    MMSSplitMateraiLotUrl: ModuleUrlConstant.MMS + "splitMaterialLot",
+
     MateiralLotOqcUrl: ModuleUrlConstant.MMS + "materialLotOQC",
     MMSDeliveryOrderSavetUrl: ModuleUrlConstant.MMS + "createDeliveryOrder",
     
+    MMSSplitMateraiLotUrl: ModuleUrlConstant.MMS + "splitMateraiLot",
+    StandardSplitMLotUrl: ModuleUrlConstant.MMS + "splitStandardMaterialLot",
     //GC
     FinishGoodManageUrl: ModuleUrlConstant.GC + "finishGoodManage",
     GCMaterialLotManagerUrl: ModuleUrlConstant.GC + "materialLotManage",
