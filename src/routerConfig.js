@@ -355,7 +355,19 @@ const routerConfig = [
   {
     path: buildPath('MMS/Mobile/ReceiveMLot'),
     layout: BlankLayout,
-    component: MobileProperties,
+    component: ReceiveMLotByOrderProperties,
+  },
+  
+  {
+    path: buildPath('MMS/Mobile/SplitMLot'),
+    layout: BlankLayout,
+    component: SplitMaterialLotProperties,
+  },
+
+  {
+    path: buildPath('MMS/Mobile/PrintMLot'),
+    layout: BlankLayout,
+    component: ReceiveMLotByOrderProperties,
   },
  {
     path: buildPath('MMS/IssueMaterialOrder'),

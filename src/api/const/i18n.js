@@ -21,10 +21,12 @@ const i18NCode = {
     NewPassword: "NewPassword",
     ConfirmPassword: "ConfirmPassword",
     BasicInfo: "BasicInfo",
+    QueryInfo: "QueryInfo",
     SelectOneRow: "SelectOneRow",
     SelectAtLeastOneRow: "SelectAtLeastOneRow",
     AddAtLeastOneRow: "AddAtLeastOneRow",
     RemarkIsNull: "RemarkIsNull",
+    TotalNumber: "TotalNumber",
 
     ConfirmDelete: "ConfirmDelete",
     ConfirmCancel: "ConfirmCancel",
@@ -224,6 +226,11 @@ const i18Messages = {
         English: "BasicInfo",
         Res: ""
     },
+    QueryInfo: {
+        Chinese: "查询信息",
+        English: "QueryInfo",
+        Res: ""
+    },
     Ok: {
         Chinese: "确定",
         English: "OK",
@@ -242,6 +249,11 @@ const i18Messages = {
     Cancel: {
         Chinese: "取消",
         English: "Cancel",
+        Res: ""
+    },
+    TotalNumber: {
+        Chinese: "总数",
+        English: "TotalNumber",
         Res: ""
     },
     SelectOneRow: {
