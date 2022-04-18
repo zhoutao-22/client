@@ -31,7 +31,7 @@ const Application = {
     
     table: {
         oprationColumn: {
-            width: 110
+            width: 90
         },
         checkBox: {
             width: 20

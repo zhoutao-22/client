@@ -5,6 +5,7 @@ import { i18NCode } from '@const/i18n';
 import EventUtils from '@utils/EventUtils';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { EditOutlined } from '@ant-design/icons';
 import { Input, Button, Modal } from 'antd';
 
 export default class IncomingMaterialDeleteTable extends EntityListTable {
@@ -19,9 +20,11 @@ export default class IncomingMaterialDeleteTable extends EntityListTable {
     }
 
     buildOperation = (record) => {
-        return <Button key="edit" style={{marginRight:'1px'}} icon="edit" size="small" 
-                onClick={() => this.handleEdit(record)} loading={this.state.loading}
-                href="javascript:;"/>
+        return (
+            <Button key="edit" style={{marginRight:'1px'}} icon={<EditOutlined />} size="small" 
+                    onClick={() => this.handleEdit(record)} loading={this.state.loading}
+                    href="javascript:;"/>
+        );
     }
 
 

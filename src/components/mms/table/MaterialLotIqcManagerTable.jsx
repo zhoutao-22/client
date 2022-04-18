@@ -1,6 +1,7 @@
 import EntityListCheckTable from "@components/framework/table/EntityListCheckTable";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Button, Tag } from "antd";
 import { DefaultRowKey } from "@api/const/ConstDefine";
 import MLotBatchJudgeIqcDialog from "../dialog/MLotBatchJudgeIqcDialog";
@@ -124,7 +125,7 @@ export default class MaterialLotIqcManagerTable extends EntityListCheckTable{
         btns.push(<Tag color="#2db7f5" >{I18NUtils.getClientMessage(i18NCode.TotalQty)}：{this.getSelectedRowsTotalQty()}</Tag>);      
 
         btns.push(this.buildStartQcButton());
-        btns.push(<Button key="bathchJudge" type="primary" className="table-button" loading={this.state.loading} icon="judge" onClick={this.handleJudge}>
+        btns.push(<Button key="bathchJudge" type="primary" className="table-button" loading={this.state.loading} icon={<LegacyIcon type="judge" />} onClick={this.handleJudge}>
                         {I18NUtils.getClientMessage(i18NCode.BtnBathchJudge)}
                     </Button>);
         return btns;

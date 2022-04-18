@@ -1,5 +1,6 @@
 import MobileForm from "@components/framework/form/MobileForm";
-import { Form } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 
 export default class CheckOrderForm extends MobileForm {
     static displayName = 'CheckOrderForm';

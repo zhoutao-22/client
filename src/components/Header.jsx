@@ -11,7 +11,9 @@ import Logo from './logo/components/Logo';
 import NoticeUtils from '@utils/NoticeUtils';
 import {SessionContext} from '@api/Application';
 import ChangePwdDialog from '@components/framework/dialog/ChangePwdDialog';
-import { Avatar, Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { CompassOutlined, IdcardOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
 
@@ -80,14 +82,14 @@ export default class Header extends PureComponent {
                     {linkProps.to ? (
                       <Link {...linkProps}>
                         {nav.icon ? (
-                          <Icon type={nav.icon} size="small" />
+                          <LegacyIcon type={nav.icon} size="small" />
                         ) : null}
                         {!isMobile ? nav.name : null}
                       </Link>
                     ) : (
                       <a {...linkProps}>
                         {nav.icon ? (
-                          <Icon type={nav.icon} size="small" />
+                          <LegacyIcon type={nav.icon} size="small" />
                         ) : null}
                         {!isMobile ? nav.name : null}
                       </a>
@@ -107,7 +109,7 @@ export default class Header extends PureComponent {
                   fontSize: 12,
                 }}
               >
-                <Avatar size="large" icon="user" className="user-avatar"/>
+                <Avatar size="large" icon={<UserOutlined />} className="user-avatar"/>
                  <div className="user-profile">
                   <span className="user-name" style={{ fontSize: '13px' }}>
                     {sessionContext ? sessionContext.username + ":" + sessionContext.description : ""}
@@ -128,22 +130,22 @@ export default class Header extends PureComponent {
             <ul>
               <li className="user-profile-menu-item">
                 <Link to="/">
-                  <Icon type="user" size="small" />{I18NUtils.getClientMessage(i18NCode.HomePage)}
+                  <UserOutlined size="small" />{I18NUtils.getClientMessage(i18NCode.HomePage)}
                 </Link>
               </li>
               <li className="user-profile-menu-item">
                 <Link to="/" onClick={this.changePassword}>
-                  <Icon type="idcard" size="small" />{I18NUtils.getClientMessage(i18NCode.ChangePwd)}
+                  <IdcardOutlined size="small" />{I18NUtils.getClientMessage(i18NCode.ChangePwd)}
                 </Link>
               </li>
               <li className="user-profile-menu-item">
                 <Link to="/">
-                  <Icon type="setting" size="small" />{I18NUtils.getClientMessage(i18NCode.Setting)}
+                  <SettingOutlined size="small" />{I18NUtils.getClientMessage(i18NCode.Setting)}
                 </Link>
               </li>
               <li className="user-profile-menu-item">
                 <Link to="/" onClick={this.logout}>
-                  <Icon type="compass" size="small" />{I18NUtils.getClientMessage(i18NCode.Exit)}
+                  <CompassOutlined size="small" />{I18NUtils.getClientMessage(i18NCode.Exit)}
                 </Link>
               </li>
             </ul>
@@ -152,7 +154,6 @@ export default class Header extends PureComponent {
       </Layout.Header>
       <ChangePwdDialog object={{}} destroyOnClose onOk={this.changePwdOk} onCancel={this.canelChangePwd} visible={this.state.changePwdVisiable} />
       </div>
-      
     );
   }
 }

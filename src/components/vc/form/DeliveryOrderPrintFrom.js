@@ -1,6 +1,7 @@
 import  React from 'react';
 import EntityForm from '@components/framework/form/EntityForm';
-import { Form } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 import SimpleBarCode from '@components/framework/code/SimpleBarCode';
 
 class DeliveryOrderPrintFrom extends EntityForm {

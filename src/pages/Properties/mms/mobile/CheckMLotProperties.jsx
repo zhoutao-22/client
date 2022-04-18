@@ -7,7 +7,9 @@ import MobileProperties from "@properties/framework/MobileProperties";
 import I18NUtils from "@utils/I18NUtils";
 import IconUtils from "@utils/IconUtils";
 import NoticeUtils from "@utils/NoticeUtils";
-import { Col, Button, Form, Row } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Col, Button, Row } from "antd";
 import { Modal } from "antd-mobile";
 
 const HandleType = {

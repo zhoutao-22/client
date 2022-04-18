@@ -4,7 +4,9 @@ import MobileTable from '@components/framework/table/MobileTable';
 
 import I18NUtils from "@utils/I18NUtils";
 import { i18NCode } from "@const/i18n";
-import { Col, Divider, Form } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Col, Divider } from "antd";
 import { Button } from "antd-mobile";
 
 /**

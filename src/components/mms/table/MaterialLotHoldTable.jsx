@@ -2,6 +2,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { InboxOutlined } from '@ant-design/icons';
 import { Button, Input } from "antd";
 import MaterialLotHoldDialog from "../dialog/MaterialLotHoldDialog";
 
@@ -38,9 +39,11 @@ export default class MaterialLotHoldTable extends EntityListTable{
     }
 
     createHoldButton =()=>{
-        return <Button key="release" type="primary" style={styles.tableButton} icon="inbox" loading={this.state.loading} onClick={this.HoldMLot}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnHold)}
-                    </Button>
+        return (
+            <Button key="release" type="primary" style={styles.tableButton} icon={<InboxOutlined />} loading={this.state.loading} onClick={this.HoldMLot}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnHold)}
+                        </Button>
+        );
     }
 
     selectRow = (record) => {

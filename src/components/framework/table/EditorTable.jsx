@@ -1,11 +1,22 @@
-import { Table, Popconfirm, Button, Form } from 'antd';
+import {
+  CloseCircleOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  PlusOutlined,
+  SaveOutlined,
+} from '@ant-design/icons';
+
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { Table, Popconfirm, Button } from 'antd';
 import * as PropTypes from 'prop-types';
 import {DefaultRowKey, DateFormatType, SqlType} from '@const/ConstDefine'
 import {Application} from '@api/Application';
 import TableObject from '@api/dto/ui/Table';
 import PropertyUtils from '@api/utils/PropertyUtils';
 import uuid from 'react-native-uuid';
-import EntityManagerRequest from '@api/entity-manager/EntityManagerRequest'; 
+import EntityManagerRequest from '@api/entity-manager/EntityManagerRequest';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
 import TableManagerRequest from '@api/table-manager/TableManagerRequest';
@@ -136,19 +147,19 @@ class EditableTable extends React.Component {
               <span>
                 <EditableContext.Consumer>
                   {form => (
-                    <Button style={{marginRight:8}} icon="save" onClick={() => this.save(form, record)} size="small" href="javascript:;"/>
+                    <Button style={{marginRight:8}} icon={<SaveOutlined />} onClick={() => this.save(form, record)} size="small" href="javascript:;"/>
                   )}
                 </EditableContext.Consumer>
                 <Popconfirm title={I18NUtils.getClientMessage(i18NCode.ConfirmCancel)} onConfirm={() => this.cancel(record.objectRrn)}>
-                  <Button style={{marginRight:8}} icon="close-circle" size="small" href="javascript:;"/>
+                  <Button style={{marginRight:8}} icon={<CloseCircleOutlined />} size="small" href="javascript:;"/>
                 </Popconfirm>
               </span>
             ) : (
               <div>
-                <Button disabled={this.state.parentReadOnly} style={{marginRight:'1px'}} size="small" icon="edit" onClick={() => this.edit(record)} href="javascript:;"/>
+                <Button disabled={this.state.parentReadOnly} style={{marginRight:'1px'}} size="small" icon={<EditOutlined />} onClick={() => this.edit(record)} href="javascript:;"/>
                   {this.state.entityViewFlag ? "" :
                     (<Popconfirm disabled={this.state.parentReadOnly} title={I18NUtils.getClientMessage(i18NCode.ConfirmDelete)} onConfirm={() => this.handleDelete(record)}>
-                      <Button disabled={this.state.parentReadOnly} icon="delete" size="small" type="danger"/>
+                      <Button disabled={this.state.parentReadOnly} icon={<DeleteOutlined />} size="small" type="danger"/>
                     </Popconfirm>)}
               </div>    
             )}
@@ -253,7 +264,7 @@ class EditableTable extends React.Component {
 
   createButtonGroup = () => {
     let buttons = [];
-    buttons.push(<Button key="add" disabled={this.state.parentReadOnly} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon="plus" onClick={() => this.handleAdd()}  href="javascript:;">{I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>);
+    buttons.push(<Button key="add" disabled={this.state.parentReadOnly} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon={<PlusOutlined />} onClick={() => this.handleAdd()}  href="javascript:;">{I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>);
     return buttons;
   }
 

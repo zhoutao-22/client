@@ -5,6 +5,7 @@ import { SystemRefListName } from "@const/ConstDefine";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Tag } from "antd";
 
 /**
@@ -75,9 +76,11 @@ export default class VcReservedMLotScanTable extends EntityListCheckTable {
     }
 
     createAutoSelectedButton = () => {
-        return <Button key="autoSelected" type="primary" className="table-button" icon="file-excel" onClick={this.autoSelected}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnAutoSeleced)}
-                    </Button>
+        return (
+            <Button key="autoSelected" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.autoSelected}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnAutoSeleced)}
+                        </Button>
+        );
     }
 
     autoSelected =() => {
@@ -112,9 +115,11 @@ export default class VcReservedMLotScanTable extends EntityListCheckTable {
     }
     
     createStockButton = () => {
-        return <Button key="reserved" type="primary" className="table-button" icon="file-excel" onClick={this.reserved}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnReserved)}
-                    </Button>
+        return (
+            <Button key="reserved" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.reserved}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnReserved)}
+                        </Button>
+        );
     }
 
     reserved =()=>{

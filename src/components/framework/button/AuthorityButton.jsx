@@ -1,3 +1,4 @@
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Button } from "antd";
 import I18NUtils from '@utils/I18NUtils';
 import IconUtils from '@utils/IconUtils';
@@ -86,21 +87,23 @@ export default class AuthorityButton extends Component {
         if (propsDisabled) {
             disabled = stateDisabled;
         }
-        return <Button 
-                key={name}
-                type={type || "primary"}
-                className={this.getClassName()}
-                icon={icon.startsWith("icon-") ? "": icon}
-                disabled={disabled}
-                size={size}
-                style={style}
-                href={href}
-                loading={loading || false}
-                onClick={() => this.handleClick()}
-            >
-            {icon.startsWith("icon-") ? IconUtils.buildIcon(icon): ""}
-            {I18NUtils.getClientMessage(i18NCode)}
-        </Button>
+        return (
+            <Button 
+                    key={name}
+                    type={type || "primary"}
+                    className={this.getClassName()}
+                    icon={<LegacyIcon type={icon.startsWith("icon-") ? "": icon} />}
+                    disabled={disabled}
+                    size={size}
+                    style={style}
+                    href={href}
+                    loading={loading || false}
+                    onClick={() => this.handleClick()}
+                >
+                {icon.startsWith("icon-") ? IconUtils.buildIcon(icon): ""}
+                {I18NUtils.getClientMessage(i18NCode)}
+            </Button>
+        );
     }
 
 }

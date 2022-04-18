@@ -3,6 +3,7 @@ import EntityListTable from '@components/framework/table/EntityListTable';
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import CreateMLotDialog from '../dialog/CreateMLotDialog';
 import PrintPickOrderDialog from '../dialog/PrintPickOrderDialog';
@@ -21,9 +22,11 @@ export default class CreateIssueOrderByMaterialInfoTable extends EntityListTable
     }
 
     createButtonGroup = () => {
-        return(<Button key="CreatePickOrder" type="primary" loading={this.state.loading} icon="file-excel" onClick={this.handleCreatePick}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
-                </Button>)
+        return (
+            <Button key="CreatePickOrder" type="primary" loading={this.state.loading} icon={<FileExcelOutlined />} onClick={this.handleCreatePick}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
+                    </Button>
+        );
     }
 
     handleCreatePick = () =>{

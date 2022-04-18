@@ -1,6 +1,7 @@
 import EntityViewProperties from "@properties/framework/EntityViewProperties";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 import NoticeUtils from "@utils/NoticeUtils";
 import VcPrintParameterRequest from "@api/vc/print-parameter-manager/VcPrintParameterRequest";
@@ -48,9 +49,11 @@ export default class VcExcelPrintProperties extends EntityViewProperties{
     }
 
     createPrintButton = () => {
-        return <Button key="printCOC" type="primary" className="table-button" icon="file-excel" onClick={this.handlePrint}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnPrint)}
-                    </Button>
+        return (
+            <Button key="printCOC" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.handlePrint}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnPrint)}
+                        </Button>
+        );
     }
 
     handlePrint = () => {

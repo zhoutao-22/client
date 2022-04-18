@@ -8,6 +8,7 @@ import EventUtils from "@utils/EventUtils";
 import I18NUtils from "@utils/I18NUtils";
 import IconUtils from "@utils/IconUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { EditOutlined, FileAddOutlined, ImportOutlined } from '@ant-design/icons';
 import { Upload, Button } from "antd";
 import DeliveryOrderPrintDialog from "../dialog/DeliveryOrderPrintDialog";
 import { SyncActionType } from '@api/sync/incoming-return-mlot/SyncIncomingOrReturnMLotRequestBody';
@@ -32,9 +33,11 @@ export default class VcDeliveryOrderTable extends EntityListTable {
     }
 
     createSyncButton = () => {
-        return (<Button key="Sync" type="primary" className="table-button" loading={this.state.loading} onClick={() => this.handleSync()} icon="import-o">
-                {I18NUtils.getClientMessage(i18NCode.BtnSync)}
-            </Button>)
+        return (
+            <Button key="Sync" type="primary" className="table-button" loading={this.state.loading} onClick={() => this.handleSync()} icon={<ImportOutlined />}>
+                    {I18NUtils.getClientMessage(i18NCode.BtnSync)}
+                </Button>
+        );
     }
 
     handleSync = () =>{
@@ -52,16 +55,20 @@ export default class VcDeliveryOrderTable extends EntityListTable {
     }
 
     createImportButton = () => {
-        return  <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                    customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
-                    <Button type="primary" style={styles.tableButton} loading={this.state.loading}  icon = "file-add">{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
-                </Upload>;
+        return (
+            <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
+                        customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
+                        <Button type="primary" style={styles.tableButton} loading={this.state.loading}  icon = {<FileAddOutlined />}>{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
+                    </Upload>
+        );
     }
 
     createSaveButton = () => {
-        return  <Button key="save" type="primary" className="table-button" onClick={this.SaveButton} icon = "import-o">
-                         {I18NUtils.getClientMessage(i18NCode.BtnImp)}
-                </Button>
+        return (
+            <Button key="save" type="primary" className="table-button" onClick={this.SaveButton} icon = {<ImportOutlined />}>
+                             {I18NUtils.getClientMessage(i18NCode.BtnImp)}
+                    </Button>
+        );
     }
 
     handleUpload = (option) => {
@@ -132,9 +139,11 @@ export default class VcDeliveryOrderTable extends EntityListTable {
     } 
 
     buildEditButton = (record) => {
-        return <Button key="edit" style={{marginRight:'1px'}} icon="edit" size="small" 
-                        onClick={() => this.openDialog(record)} 
-                        disabled={false} href="javascript:;"/>
+        return (
+            <Button key="edit" style={{marginRight:'1px'}} icon={<EditOutlined />} size="small" 
+                            onClick={() => this.openDialog(record)} 
+                            disabled={false} href="javascript:;"/>
+        );
     }
 
     openDialog =(record)=>{

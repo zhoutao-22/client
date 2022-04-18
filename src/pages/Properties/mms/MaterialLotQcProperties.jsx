@@ -1,6 +1,8 @@
 import { i18NCode } from "@const/i18n";
 import EntityViewProperties from "@properties/framework/EntityViewProperties";
 import I18NUtils from "@utils/I18NUtils";
+import { EditOutlined } from '@ant-design/icons';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import { Button, Input } from "antd";
 import '@components/framework/table/ListTable.scss';
 import MaterialLotQcDialog from "@components/mms/dialog/MaterialLotQcDialog";
@@ -94,15 +96,19 @@ export default class MaterialLotQcProperties extends EntityViewProperties{
     }
 
     createRemarkButton = () => {
-        return <Button key="remark" type="primary" className="table-button" icon="edit" onClick={this.handleRemark}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnRemark)}
-                    </Button>
+        return (
+            <Button key="remark" type="primary" className="table-button" icon={<EditOutlined />} onClick={this.handleRemark}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnRemark)}
+                        </Button>
+        );
     }
 
     createJudgeButton = () => {
-        return <Button key="judge" type="primary" className="table-button" icon="judge" onClick={this.handleJudge}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnJudge)}
-                    </Button>
+        return (
+            <Button key="judge" type="primary" className="table-button" icon={<LegacyIcon type="judge" />} onClick={this.handleJudge}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnJudge)}
+                        </Button>
+        );
     }
 
     buildDialog = () => {

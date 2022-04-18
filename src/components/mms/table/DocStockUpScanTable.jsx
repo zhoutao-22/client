@@ -5,6 +5,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Tag } from "antd";
 
 /**
@@ -51,9 +52,11 @@ export default class DocStockUpScanTable extends EntityListCheckTable {
     }
 
     createStockUpButton = () => {
-        return <Button key="stockUp" type="primary" className="table-button" icon="file-excel" onClick={this.stockUp}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnReserved)}
-                    </Button>
+        return (
+            <Button key="stockUp" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.stockUp}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnReserved)}
+                        </Button>
+        );
     }
 
     stockUp =()=>{

@@ -2,6 +2,7 @@ import React from 'react';
 
 import '@components/framework/table/ListTable.scss';
 import EntityListTable from '@components/framework/table/EntityListTable';
+import { FileAddOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import { i18NCode } from '@api/const/i18n';
@@ -50,7 +51,7 @@ export default class SpareMaterialTable extends EntityListTable {
     }
 
     createScrapMaterialLotButton = () => {
-        return <Button key="ScrapMLot" type="primary" className="table-button" icon="plus" onClick={() => this.handleScrapMaterialLot("Scrap")}>{I18NUtils.getClientMessage("报废入库")}</Button>;
+        return <Button key="ScrapMLot" type="primary" className="table-button" icon={<PlusOutlined />} onClick={() => this.handleScrapMaterialLot("Scrap")}>{I18NUtils.getClientMessage("报废入库")}</Button>;
     }
 
     handleScrapMaterialLot = (actionType) => {
@@ -76,10 +77,12 @@ export default class SpareMaterialTable extends EntityListTable {
     }
 
     createImportButton = () => {
-        return  <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                    customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
-                    <Button style={{marginLeft: '20px'}} type="primary" loading={this.state.loading} icon="file-add">{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
-                </Upload>;
+        return (
+            <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
+                        customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
+                        <Button style={{marginLeft: '20px'}} type="primary" loading={this.state.loading} icon={<FileAddOutlined />}>{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
+                    </Upload>
+        );
     }
 
     handleUpload = (option) => {
@@ -116,7 +119,7 @@ export default class SpareMaterialTable extends EntityListTable {
     }
 
     createReceiveMaterialLotButton = () => {
-        return <Button key="ReceiveMaterialLot" type="primary" className="table-button" icon="plus" onClick={() => this.handleReceiveMaterialLot("Create")}>{I18NUtils.getClientMessage("创建入库")}</Button>;
+        return <Button key="ReceiveMaterialLot" type="primary" className="table-button" icon={<PlusOutlined />} onClick={() => this.handleReceiveMaterialLot("Create")}>{I18NUtils.getClientMessage("创建入库")}</Button>;
     }
 
     handleReceiveMaterialLot = (actionType) => {
@@ -142,7 +145,7 @@ export default class SpareMaterialTable extends EntityListTable {
     }
 
     createReturnMaterialLotButton = () => {
-        return <Button key="ReturnMaterialLot" type="primary" className="table-button" icon="plus" onClick={() => this.handleReceiveMaterialLot("Return")}>{I18NUtils.getClientMessage("退料入库")}</Button>;
+        return <Button key="ReturnMaterialLot" type="primary" className="table-button" icon={<PlusOutlined />} onClick={() => this.handleReceiveMaterialLot("Return")}>{I18NUtils.getClientMessage("退料入库")}</Button>;
     }
 
     handleReceiveMaterialOk = () => {

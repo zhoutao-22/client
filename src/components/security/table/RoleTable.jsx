@@ -1,4 +1,7 @@
-import {Button, Form} from 'antd';
+import { AuditOutlined, UserAddOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Button } from 'antd';
 import { i18NCode } from "@api/const/i18n";
 import I18NUtils from "@api/utils/I18NUtils";
 import RoleManagerRequest from "@api/role-manager/RoleManagerRequest";
@@ -162,8 +165,8 @@ export default class RoleTable extends EntityListTable {
         buttons.push(this.createAddButton());
         buttons.push(this.createImportButton());
         buttons.push(this.createExportDataAndTemplateButton());
-        buttons.push(<Button key="dispatchUser" type="primary" className="table-button" icon="user-add" onClick={() => this.openDispatchUserForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchUser)}</Button>);
-        buttons.push(<Button key="dispatchAutority" type="primary" className="table-button" icon="audit" onClick={() => this.openDispatchAuthorityForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchAuthority)}</Button>);
+        buttons.push(<Button key="dispatchUser" type="primary" className="table-button" icon={<UserAddOutlined />} onClick={() => this.openDispatchUserForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchUser)}</Button>);
+        buttons.push(<Button key="dispatchAutority" type="primary" className="table-button" icon={<AuditOutlined />} onClick={() => this.openDispatchAuthorityForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchAuthority)}</Button>);
         return buttons;
     }
 

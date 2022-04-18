@@ -6,7 +6,9 @@ import { i18NCode } from "@const/i18n";
 import MobileProperties from "@properties/framework/MobileProperties";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
-import { Col, Form } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Col } from "antd";
 import { Button } from "antd-mobile";
 
 const ActionCode = {

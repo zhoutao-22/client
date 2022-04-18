@@ -5,7 +5,8 @@ import { DateFormatType } from "@const/ConstDefine";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
-import { Form } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 import moment from 'moment';
 
 export default class UpdateMLotForm extends MobileForm {

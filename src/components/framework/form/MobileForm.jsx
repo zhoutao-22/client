@@ -1,5 +1,7 @@
 import EntityForm from "@components/framework/form/EntityForm";
-import { Col, Form, Row } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Col, Row } from "antd";
 import SqlUtils from "@components/framework/utils/SqlUtils";
 import './MobileForm.scss';
 import I18NUtils from "@utils/I18NUtils";

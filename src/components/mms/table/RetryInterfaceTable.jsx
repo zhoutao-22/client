@@ -2,6 +2,7 @@ import RetryInterfaceRequest from '@api/interface-manager/RetryInterfaceRequest'
 import EntityListTable from '@components/framework/table/EntityListTable';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { InboxOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 /**
@@ -12,9 +13,11 @@ export default class RetryInterfaceTable extends EntityListTable {
     static displayName = 'RetryInterfaceTable';
 
     createButtonGroup = () => {
-        return(<Button key = "Retry" type="primary" className="table-button" icon="inbox" onClick={this.handleRetry} loading={this.state.loading}>
-            {I18NUtils.getClientMessage("重发")}
-        </Button>)
+        return (
+            <Button key = "Retry" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.handleRetry} loading={this.state.loading}>
+                {I18NUtils.getClientMessage("重发")}
+            </Button>
+        );
     }
 
     handleRetry = () => {

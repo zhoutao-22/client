@@ -1,3 +1,4 @@
+import { DropboxOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import ReturnLotOrderRequest from '@api/return-material-manager/ReturnLotOrderRequest';
 import EntityListTable from '@components/framework/table/EntityListTable';
@@ -46,9 +47,11 @@ export default class CreateReturnTable extends EntityListTable {
     }
 
     creatReturnButton = () => {
-        return <Button key="CreateReturnOrder" type="primary" className="table-button" icon="dropbox" onClick={this.CreateReturnOrder} loading={this.state.loading}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
-                    </Button>
+        return (
+            <Button key="CreateReturnOrder" type="primary" className="table-button" icon={<DropboxOutlined />} onClick={this.CreateReturnOrder} loading={this.state.loading}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
+                        </Button>
+        );
     }
 
     CreateReturnOrder = () =>{

@@ -2,6 +2,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import TableManagerRequest from "@api/table-manager/TableManagerRequest";
 import TableUtils from "@components/framework/utils/TableUtils";
 import { SqlType } from "@const/ConstDefine";
+import { PlusOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 import NoticeUtils from '@utils/NoticeUtils';
 import I18NUtils from '@utils/I18NUtils';
@@ -49,7 +50,7 @@ export default class VcCreateOrderLineTable extends EntityListTable {
 
     createButtonGroup = () => {
         let buttons = [];
-        buttons.push(<Button key="add" disabled={this.state.parentReadOnly} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon="plus" onClick={() => this.handleAdd()}  href="javascript:;">{I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>);
+        buttons.push(<Button key="add" disabled={this.state.parentReadOnly} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon={<PlusOutlined />} onClick={() => this.handleAdd()}  href="javascript:;">{I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>);
         return buttons;
     }
 

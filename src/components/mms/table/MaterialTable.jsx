@@ -2,6 +2,7 @@ import React from 'react';
 
 import MaterialDialog from '@components/mms/dialog/MaterialDialog';
 import EntityListTable from '@components/framework/table/EntityListTable';
+import { PlusOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import { i18NCode } from '@api/const/i18n';
@@ -47,7 +48,7 @@ export default class MaterialTable extends EntityListTable {
     }
 
     createReceiveMaterialLotButton = () => {
-        return <Button key="ReceiveMaterialLot" type="primary" className="table-button" icon="plus" onClick={() => this.handleReceiveMaterialLot()}>{I18NUtils.getClientMessage(i18NCode.BtnReceiveMaterialLot)}</Button>;
+        return <Button key="ReceiveMaterialLot" type="primary" className="table-button" icon={<PlusOutlined />} onClick={() => this.handleReceiveMaterialLot()}>{I18NUtils.getClientMessage(i18NCode.BtnReceiveMaterialLot)}</Button>;
     }
 
     handleReceiveMaterialLot = () => {

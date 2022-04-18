@@ -2,6 +2,7 @@ import React from 'react';
 import LabMaterialDialog from '@components/mms/dialog/LabMaterialDialog';
 import EntityListTable from '@components/framework/table/EntityListTable';
 import LabMaterialManagerRequest from '@api/mms/lab-material-manager/LabMaterialManagerRequest';
+import { FileAddOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -33,10 +34,12 @@ export default class LabMaterialTable extends EntityListTable {
     }
 
     createImportButton = () => {
-        return  <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                    customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
-                    <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon="file-add">{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
-                </Upload>;
+        return (
+            <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
+                        customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
+                        <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon={<FileAddOutlined />}>{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
+                    </Upload>
+        );
     }
 
     handleUpload = (option) => {

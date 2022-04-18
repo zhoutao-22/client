@@ -4,7 +4,8 @@ import EntityForm from '@components/framework/form/EntityForm';
 import SimpleBarCode from '@components/framework/code/SimpleBarCode';
 import QRCode from 'qrcode.react';
 import * as PropTypes from 'prop-types';
-import { Form } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 
 /**
  * 展示一维码和二维码的Form

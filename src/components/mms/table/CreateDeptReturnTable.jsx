@@ -7,6 +7,7 @@ import PrintReturnOrderDialog from '../dialog/PrintReturnOrderDialog';
 import TableManagerRequest from '@api/table-manager/TableManagerRequest';
 import CreateDeptReturnDialog from '../dialog/CreateDeptReturnDialog';
 import EntityListTable from '@components/framework/table/EntityListTable';
+import { DropboxOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import EventUtils from '@utils/EventUtils';
 import VcImportExcelRequest from '@api/vc/import-excel-manager/VcImportExcelRequest';
@@ -47,9 +48,11 @@ export default class CreateDeptReturnTable extends EntityListTable {
     }
 
     creatDeptReturnButton = () => {
-        return <Button key="CreateReturnOrder" type="primary" className="table-button" icon="dropbox" onClick={this.CreateReturnOrder} loading={this.state.loading}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
-                    </Button>
+        return (
+            <Button key="CreateReturnOrder" type="primary" className="table-button" icon={<DropboxOutlined />} onClick={this.CreateReturnOrder} loading={this.state.loading}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnCreate)}
+                        </Button>
+        );
     }
 
     createForm = () => {

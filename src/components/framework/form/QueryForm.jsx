@@ -1,4 +1,7 @@
-import { Form, Row, Col, Button, Icon } from 'antd';
+import { Form, Icon as LegacyIcon } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { RedoOutlined, SearchOutlined } from '@ant-design/icons';
+import { Row, Col, Button } from 'antd';
 import './QueryForm.scss';
 import TableManagerRequest from '@api/table-manager/TableManagerRequest';
 import Field from '@api/dto/ui/Field';
@@ -105,10 +108,10 @@ class QueryForm extends React.Component {
                 {queryFields.length > 0 && showButton? 
                     <Row>
                         <Col span={24} style={{ textAlign: 'right' }}>
-                            <Button icon="search" type="primary" htmlType="submit">{searchTxt}</Button>
-                            <Button icon="redo" style={{ marginLeft: 8 }} onClick={this.handleReset}>{I18NUtils.getClientMessage(i18NCode.BtnReset)}</Button>
+                            <Button icon={<SearchOutlined />} type="primary" htmlType="submit">{searchTxt}</Button>
+                            <Button icon={<RedoOutlined />} style={{ marginLeft: 8 }} onClick={this.handleReset}>{I18NUtils.getClientMessage(i18NCode.BtnReset)}</Button>
                             <a style={{ marginLeft: 8, fontSize: 12 }} onClick={this.toggle}>
-                                {I18NUtils.getClientMessage(i18NCode.Collapse)}<Icon type={this.state.expand ? 'up' : 'down'} />
+                                {I18NUtils.getClientMessage(i18NCode.Collapse)}<LegacyIcon type={this.state.expand ? 'up' : 'down'} />
                             </a>
                         </Col>
                     </Row> : ""}

@@ -1,9 +1,11 @@
+import { LockOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 import {Button} from 'antd';
 import UserManagerRequest from '@api/user-manager/UserManagerRequest';
 import I18NUtils from "@api/utils/I18NUtils";
 import { i18NCode } from "@api/const/i18n";
 import UserForm from "@components/security/form/UserForm";
-import {Form} from 'antd';
 import EntityListTable from "@components/framework/table/EntityListTable";
 import NoticeUtils from '@utils/NoticeUtils';
 
@@ -48,7 +50,7 @@ export default class UserTable extends EntityListTable {
         buttons.push(this.createAddButton());
         buttons.push(this.createImportButton());
         buttons.push(this.createExportDataAndTemplateButton());
-        buttons.push(<Button key="resetPwd" type="primary" className="table-button" icon="lock" onClick={() => this.resetPassword()}>{I18NUtils.getClientMessage(i18NCode.BtnResetPassword)}</Button>);
+        buttons.push(<Button key="resetPwd" type="primary" className="table-button" icon={<LockOutlined />} onClick={() => this.resetPassword()}>{I18NUtils.getClientMessage(i18NCode.BtnResetPassword)}</Button>);
         return buttons;
     }
 

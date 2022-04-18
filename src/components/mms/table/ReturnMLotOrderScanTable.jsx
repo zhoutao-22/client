@@ -3,6 +3,7 @@ import ReturnLotOrderRequest from '@api/return-material-manager/ReturnLotOrderRe
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 
 export default class ReturnMLotOrderScanTable extends EntityScanViewTable {
@@ -54,9 +55,11 @@ export default class ReturnMLotOrderScanTable extends EntityScanViewTable {
   
 
     createReturnLotButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="file-excel" onClick={this.ReturnMLot}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnReturnMLot)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.ReturnMLot}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnReturnMLot)}
+                        </Button>
+        );
     }
 
     ReturnMLot = () => {

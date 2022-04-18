@@ -3,6 +3,7 @@ import EntityScanViewTable from '@components/framework/table/EntityScanViewTable
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 
 /**
@@ -30,9 +31,11 @@ export default class IssueLotOrderScanTable extends EntityScanViewTable {
   
 
     createIssueLotButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="file-excel" onClick={this.IssueLot}>
-                        {I18NUtils.getClientMessage(i18NCode.Issue)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.IssueLot}>
+                            {I18NUtils.getClientMessage(i18NCode.Issue)}
+                        </Button>
+        );
     }
 
     IssueLot = () => {

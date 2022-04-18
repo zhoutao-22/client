@@ -1,4 +1,7 @@
-import { Button, Form } from 'antd';
+import { InboxOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Button } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
 import EntityScanViewTable from '@components/framework/table/EntityScanViewTable';
@@ -66,15 +69,19 @@ export default class VcPackCheckTable extends EntityScanViewTable {
     }
 
     createJudgePassButton = () => {
-        return <Button key="judgePass" type="primary" className="table-button" icon="inbox" onClick={this.judgePass}>
-                        Pass
-                    </Button>
+        return (
+            <Button key="judgePass" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.judgePass}>
+                            Pass
+                        </Button>
+        );
     }
 
     createJudgeNgButton = () => {
-        return <Button key="judgeNg" type="primary" className="table-button" icon="inbox" onClick={this.judgeNg}>
-                        NG
-                    </Button>
+        return (
+            <Button key="judgeNg" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.judgeNg}>
+                            NG
+                        </Button>
+        );
     }
 
 

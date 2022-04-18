@@ -1,6 +1,7 @@
 import EntityListTable from '@components/framework/table/EntityListTable';
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import PrintLabMLotRecommendOrderDialog from '../dialog/PrintLabMLotRecommendOrderDialog';
 
@@ -17,9 +18,11 @@ export default class RecommendIssueMLotTable extends EntityListTable {
     }
 
     createButtonGroup = () => {
-        return(<Button key="Print" type="primary" loading={this.state.loading} icon="file-excel" onClick={this.handlePrint}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnPrint)}
-                </Button>)
+        return (
+            <Button key="Print" type="primary" loading={this.state.loading} icon={<FileExcelOutlined />} onClick={this.handlePrint}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnPrint)}
+                    </Button>
+        );
     }
     
     buildOperation = (record) => {

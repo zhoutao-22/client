@@ -4,6 +4,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { DropboxOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 import VcAddRmaNoDialog from "../dialog/VcAddRmaNoDialog";
 
@@ -41,9 +42,11 @@ export default class VcAddRmaInfoTable extends EntityListTable {
     }
 
     creatAddRmaNoButton = () => {
-        return  <Button key="AddRmaNo" type="primary" className="table-button" icon="dropbox" onClick={this.AddRmaNo} loading={this.state.loading}>
-                    {I18NUtils.getClientMessage(i18NCode.BtnAdd)}
-                </Button>
+        return (
+            <Button key="AddRmaNo" type="primary" className="table-button" icon={<DropboxOutlined />} onClick={this.AddRmaNo} loading={this.state.loading}>
+                        {I18NUtils.getClientMessage(i18NCode.BtnAdd)}
+                    </Button>
+        );
     }
 
     AddRmaNo = () =>{

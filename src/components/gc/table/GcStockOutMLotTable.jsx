@@ -1,5 +1,6 @@
 
 import EntityScanViewTable from '@components/framework/table/EntityScanViewTable';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import NoticeUtils from '@utils/NoticeUtils';
 import I18NUtils from '@utils/I18NUtils';
@@ -46,9 +47,11 @@ export default class GcStockOutMLotTable extends EntityScanViewTable {
     }
 
     createStockOut = () => {
-        return <Button key="stockOut" type="primary" className="table-button" icon="file-excel" onClick={this.stockOut}>
-                        发货
-                    </Button>
+        return (
+            <Button key="stockOut" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.stockOut}>
+                            发货
+                        </Button>
+        );
     }
 }
 

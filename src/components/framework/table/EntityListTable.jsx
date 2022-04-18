@@ -1,6 +1,15 @@
 import  React, { Component } from 'react';
 
-import { Table, Popconfirm, Button, Dropdown, Menu, Icon, Tabs, Divider } from 'antd';
+import {
+    DatabaseOutlined,
+    DeleteOutlined,
+    DownOutlined,
+    EditOutlined,
+    ExportOutlined,
+    FileExcelOutlined,
+} from '@ant-design/icons';
+
+import { Table, Popconfirm, Button, Dropdown, Menu, Tabs, Divider } from 'antd';
 import './ListTable.scss';
 import {Application, SessionContext} from '@api/Application'
 import {DefaultRowKey, Language} from '@api/const/ConstDefine'
@@ -126,9 +135,11 @@ export default class EntityListTable extends Component {
 
     buildEditButton = (record) => {
         let hasEditBtnAuthority = this.hasEditBtnAuthority(record)
-        return <Button key="edit" style={{marginRight:'1px'}} icon="edit" size="small" 
-                        onClick={() => this.handleEdit(record)} 
-                        disabled={!hasEditBtnAuthority} href="javascript:;"/>
+        return (
+            <Button key="edit" style={{marginRight:'6px'}} icon={<EditOutlined />} size="small" 
+                            onClick={() => this.handleEdit(record)} 
+                            disabled={!hasEditBtnAuthority} href="javascript:;"/>
+        );
     }
 
     hasDeleteBtnAuthority = (record) => {
@@ -137,9 +148,11 @@ export default class EntityListTable extends Component {
 
     buildDeletePopConfirm = (record) => {
         let hasDeleteBtnAuthority = this.hasDeleteBtnAuthority(record)
-        return <Popconfirm key="delete" disabled={!hasDeleteBtnAuthority} title={I18NUtils.getClientMessage(i18NCode.ConfirmDelete)} onConfirm={() => this.handleDelete(record)}>
-                    <Button disabled={!hasDeleteBtnAuthority} icon="delete" size="small" type="danger"/>
-                </Popconfirm>;
+        return (
+            <Popconfirm key="delete" disabled={!hasDeleteBtnAuthority} title={I18NUtils.getClientMessage(i18NCode.ConfirmDelete)} onConfirm={() => this.handleDelete(record)}>
+                        <Button disabled={!hasDeleteBtnAuthority} icon={<DeleteOutlined />} size="small" type="danger"/>
+                    </Popconfirm>
+        );
     }
 
     handleDelete = (record) => {
@@ -276,18 +289,20 @@ export default class EntityListTable extends Component {
         const exportMenu = (
             <Menu onClick={this.handleExpMenuClick.bind(this)}>
                 <Menu.Item key={ExpMenuKey.exportData}>
-                    <Icon type="database" /> {I18NUtils.getClientMessage(i18NCode.BtnExpData)}
+                    <DatabaseOutlined /> {I18NUtils.getClientMessage(i18NCode.BtnExpData)}
                 </Menu.Item>
                 <Menu.Item key={ExpMenuKey.exportTemplate}>
-                    <Icon type="file-excel" />{I18NUtils.getClientMessage(i18NCode.BtnExpTemplate)}
+                    <FileExcelOutlined />{I18NUtils.getClientMessage(i18NCode.BtnExpTemplate)}
                 </Menu.Item>
             </Menu>
         );
-        return <Dropdown key="export" overlay={exportMenu}>
-                    <Button type="primary" className="table-button" icon="export" >
-                        {I18NUtils.getClientMessage(i18NCode.BtnExp)} <Icon type="down" />
-                    </Button>
-                </Dropdown>;
+        return (
+            <Dropdown key="export" overlay={exportMenu}>
+                        <Button type="primary" className="table-button" icon={<ExportOutlined />} >
+                            {I18NUtils.getClientMessage(i18NCode.BtnExp)} <DownOutlined />
+                        </Button>
+                    </Dropdown>
+        );
     }
 
     /**
@@ -422,6 +437,7 @@ export default class EntityListTable extends Component {
             <div className="table-button-group">
                 {this.createButtonGroup()}
                 {this.createTagGroup()}
+                <Divider />
             </div>
             <div>
                 <Table  

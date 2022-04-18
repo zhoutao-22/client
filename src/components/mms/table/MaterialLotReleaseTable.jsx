@@ -6,6 +6,7 @@ import { i18NCode } from "@const/i18n";
 import EventUtils from "@utils/EventUtils";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { FileAddOutlined, InboxOutlined, RedoOutlined } from '@ant-design/icons';
 import { Button, Input, Upload } from "antd";
 import MaterialLotReleaseDialog from "../dialog/MaterialLotReleaseDialog";
 
@@ -27,10 +28,12 @@ export default class MaterialLotReleaseTable extends EntityListCheckTable{
     }
 
     createImportButton = () => {
-        return  <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                    customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
-                    <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon="file-add">{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
-                </Upload>;
+        return (
+            <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
+                        customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
+                        <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon={<FileAddOutlined />}>{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
+                    </Upload>
+        );
     }
 
     handleUpload = (option) => {
@@ -86,16 +89,20 @@ export default class MaterialLotReleaseTable extends EntityListCheckTable{
     }
 
     createReleaseButton =()=>{
-        return <Button key="release" type="primary" style={styles.tableButton} icon="inbox" loading={this.state.loading} 
-                        onClick={this.releaseMLot}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnRelease)}
-                    </Button>
+        return (
+            <Button key="release" type="primary" style={styles.tableButton} icon={<InboxOutlined />} loading={this.state.loading} 
+                            onClick={this.releaseMLot}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnRelease)}
+                        </Button>
+        );
     }
 
     createResetSelectRow =()=>{
-        return <Button key="resetSelectRow" type="primary" style={styles.tableButton} icon="redo" loading={this.state.loading} onClick={this.resetSelectRow}>
-                        {I18NUtils.getClientMessage("清空")}
-                    </Button>
+        return (
+            <Button key="resetSelectRow" type="primary" style={styles.tableButton} icon={<RedoOutlined />} loading={this.state.loading} onClick={this.resetSelectRow}>
+                            {I18NUtils.getClientMessage("清空")}
+                        </Button>
+        );
     }
 
     resetSelectRow =()=>{

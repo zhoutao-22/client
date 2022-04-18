@@ -1,6 +1,7 @@
-import { Icon } from "antd";
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { createFromIconfontCN } from '@ant-design/icons';
 
-const CutsomIcon = Icon.createFromIconfontCN({
+const CutsomIcon = createFromIconfontCN({
     scriptUrl: require('./iconfont.js'),
 });
 
@@ -20,7 +21,7 @@ export default class IconUtils {
         if (iconName.startsWith(CustomIconPrefix)) {
             return <CutsomIcon style={style} theme={theme} type={iconName}></CutsomIcon>
         }
-        return <Icon style={style} theme={theme} type={iconName}/>
+        return <LegacyIcon style={style} theme={theme} type={iconName}/>;
     }
 
 

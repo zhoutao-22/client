@@ -4,6 +4,7 @@ import QCApprovalDialog from "@components/mms/dialog/QCApprovalDialog";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { ImportOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 
 export default class VcQCApprovalTable extends EntityListCheckTable {
@@ -22,9 +23,11 @@ export default class VcQCApprovalTable extends EntityListCheckTable {
     }
 
     createApprovalButton = () => {
-        return  <Button key="approval" type="primary" className="table-button" onClick={this.handledApproval} icon = "import-o">
-                         {I18NUtils.getClientMessage(i18NCode.BtnApprove)}
-                </Button>
+        return (
+            <Button key="approval" type="primary" className="table-button" onClick={this.handledApproval} icon = {<ImportOutlined />}>
+                             {I18NUtils.getClientMessage(i18NCode.BtnApprove)}
+                    </Button>
+        );
     }
 
     createForm = () => {

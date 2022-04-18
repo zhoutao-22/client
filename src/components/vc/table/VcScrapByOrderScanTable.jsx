@@ -3,6 +3,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 
 /**
@@ -55,9 +56,11 @@ export default class VcScrapByOrderScanTable extends EntityListTable {
   
 
     createScrapButton = () => {
-        return <Button key="ScrapMLot" type="primary" className="table-button" icon="file-excel" onClick={this.ScrapMLot}>
-                        {I18NUtils.getClientMessage("报废")}
-                    </Button>
+        return (
+            <Button key="ScrapMLot" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.ScrapMLot}>
+                            {I18NUtils.getClientMessage("报废")}
+                        </Button>
+        );
     }
 
     ScrapMLot = () => {

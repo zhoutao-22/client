@@ -1,3 +1,4 @@
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Input, Tag} from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -42,9 +43,11 @@ export default class IncomingMaterialReceiveScanTable extends EntityScanViewTabl
   
 
     createReceiveButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="file-excel" onClick={this.receive}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnReceive)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.receive}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnReceive)}
+                        </Button>
+        );
     }
 
     receive = () => {

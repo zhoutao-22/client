@@ -1,4 +1,5 @@
 
+import { InboxOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import { i18NCode } from '@api/const/i18n';
@@ -65,9 +66,11 @@ export default class MaterialLotStockInTable extends EntityScanViewTable {
     }
 
     createStockInButton = () => {
-        return <Button key="packCaseCheck" type="primary" className="table-button" icon="inbox" onClick={this.stockIn}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnStockIn)}
-                    </Button>
+        return (
+            <Button key="packCaseCheck" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.stockIn}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnStockIn)}
+                        </Button>
+        );
     }
 
 }

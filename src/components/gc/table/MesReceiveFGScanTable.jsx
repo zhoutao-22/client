@@ -1,4 +1,5 @@
 
+import { ImportOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -35,9 +36,11 @@ export default class MesReceiveFGScanTable extends EntityScanViewTable {
     }
 
     createReceiveButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="import" onClick={this.receive}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnReceive)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<ImportOutlined />} onClick={this.receive}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnReceive)}
+                        </Button>
+        );
     }
 
 }

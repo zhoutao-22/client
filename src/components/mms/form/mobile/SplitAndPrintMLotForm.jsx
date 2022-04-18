@@ -1,7 +1,8 @@
 import TableManagerRequest from "@api/table-manager/TableManagerRequest";
 import MobileForm from "@components/framework/form/MobileForm";
 import SqlUtils from "@components/framework/utils/SqlUtils";
-import { Form } from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 
 export default class SplitAndPrintMLotForm extends MobileForm {
     static displayName = 'SplitAndPrintMLotForm';

@@ -4,6 +4,7 @@ import EntityScanViewTable from '@components/framework/table/EntityScanViewTable
 import { i18NCode } from '@const/i18n';
 import I18NUtils from '@utils/I18NUtils';
 import NoticeUtils from '@utils/NoticeUtils';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 
 export default class IssueByMLotOrderScanTable extends EntityScanViewTable {
@@ -28,9 +29,11 @@ export default class IssueByMLotOrderScanTable extends EntityScanViewTable {
   
 
     createIssueMLotButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="file-excel" onClick={this.IssueMLot}>
-                        {I18NUtils.getClientMessage(i18NCode.Issue)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.IssueMLot}>
+                            {I18NUtils.getClientMessage(i18NCode.Issue)}
+                        </Button>
+        );
     }
 
     IssueMLot = () => {

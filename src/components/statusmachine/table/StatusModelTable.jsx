@@ -1,5 +1,8 @@
 import EntityListTable from "@components/framework/table/EntityListTable";
-import { Button, Form } from "antd";
+import { UserAddOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Button } from "antd";
 import { i18NCode } from "@api/const/i18n";
 import I18NUtils from "@api/utils/I18NUtils";
 import DispatchDialog from "@components/framework/dialog/DispatchDialog";
@@ -102,7 +105,7 @@ export default class StatusModelTable extends EntityListTable {
         buttons.push(this.createAddButton());
         buttons.push(this.createImportButton());
         buttons.push(this.createExportDataAndTemplateButton());
-        buttons.push(<Button key="dispatchEvent" type="primary" className="table-button" icon="user-add" onClick={() => this.openDispatchEventForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchEvent)}</Button>);
+        buttons.push(<Button key="dispatchEvent" type="primary" className="table-button" icon={<UserAddOutlined />} onClick={() => this.openDispatchEventForm()}>{I18NUtils.getClientMessage(i18NCode.BtnDispatchEvent)}</Button>);
         return buttons;
     }
 }

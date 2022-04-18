@@ -1,5 +1,6 @@
 
 import EntityScanViewTable from '@components/framework/table/EntityScanViewTable';
+import { InboxOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -40,9 +41,11 @@ export default class StockInStorageTable extends EntityScanViewTable {
     }
 
     createStockInButton = () => {
-        return <Button key="packCaseCheck" type="primary" className="table-button" icon="inbox" onClick={this.stockIn}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnStockIn)}
-                    </Button>
+        return (
+            <Button key="packCaseCheck" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.stockIn}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnStockIn)}
+                        </Button>
+        );
     }
 
 }

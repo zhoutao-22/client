@@ -1,7 +1,8 @@
 import  React from 'react';
 import EntityForm from '@components/framework/form/EntityForm';
 import SimpleBarCode from '@components/framework/code/SimpleBarCode';
-import { Form } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 
 /**
  * 打印退料料单

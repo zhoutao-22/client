@@ -1,5 +1,6 @@
 import React from 'react';
 import EntityScanViewTable from '@components/framework/table/EntityScanViewTable';
+import { DeleteOutlined, FileAddOutlined, ImportOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import EventUtils from '@api/utils/EventUtils';
@@ -33,28 +34,36 @@ export default class IncomingMLotImportTable extends EntityScanViewTable {
     }
 
     createSyncButton = () => {
-        return (<Button key="Sync" type="primary" className="table-button" onClick={() => this.handleSync()} icon="import-o">
-                {I18NUtils.getClientMessage(i18NCode.BtnSync)}
-            </Button>)
+        return (
+            <Button key="Sync" type="primary" className="table-button" onClick={() => this.handleSync()} icon={<ImportOutlined />}>
+                    {I18NUtils.getClientMessage(i18NCode.BtnSync)}
+                </Button>
+        );
     }
 
     createImportButton = () => {
-        return  <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                    customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
-                    <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon="file-add">{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
-                </Upload>;
+        return (
+            <Upload key="import" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
+                        customRequest={(option) => this.handleUpload(option)} showUploadList={false} >
+                        <Button type="primary" style={styles.tableButton} loading={this.state.loading} icon={<FileAddOutlined />}>{I18NUtils.getClientMessage(i18NCode.SelectFile)}</Button>
+                    </Upload>
+        );
     }
 
     createSaveButton = () => {
-        return  <Button key="receive" type="primary" className="table-button" onClick={() => this.SaveButton()} icon="import-o">
-                         {I18NUtils.getClientMessage(i18NCode.BtnImp)}
-                </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" onClick={() => this.SaveButton()} icon={<ImportOutlined />}>
+                             {I18NUtils.getClientMessage(i18NCode.BtnImp)}
+                    </Button>
+        );
     }
 
     createDeleteAllButton = () => {
-        return  <Button key="delete" type="primary" className="table-button" onClick={() => this.deleteAllMaterialLot()} icon="delete-o">
-                         {I18NUtils.getClientMessage(i18NCode.BtnReset)}
-                </Button>
+        return (
+            <Button key="delete" type="primary" className="table-button" onClick={() => this.deleteAllMaterialLot()} icon={<DeleteOutlined />}>
+                             {I18NUtils.getClientMessage(i18NCode.BtnReset)}
+                    </Button>
+        );
     }
     
     handleSync = () =>{

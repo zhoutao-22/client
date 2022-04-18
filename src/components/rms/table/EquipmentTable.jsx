@@ -1,3 +1,4 @@
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import {Button} from 'antd';
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@api/utils/I18NUtils";
@@ -13,9 +14,11 @@ export default class EquipmentTable extends EntityListTable {
     }
 
     createGetRecipeListButton = () => {
-        return <Button key="dispatchAutority" type="primary" className="table-button" icon={IconUtils.buildIcon("icon-huoqu")} onClick={() => this.getRecipeList()}>
-                    {I18NUtils.getClientMessage(i18NCode.BtnGetRecipe)}
-            </Button>
+        return (
+            <Button key="dispatchAutority" type="primary" className="table-button" icon={<LegacyIcon type={IconUtils.buildIcon("icon-huoqu")} />} onClick={() => this.getRecipeList()}>
+                        {I18NUtils.getClientMessage(i18NCode.BtnGetRecipe)}
+                </Button>
+        );
     }
 
     createButtonGroup = () => {

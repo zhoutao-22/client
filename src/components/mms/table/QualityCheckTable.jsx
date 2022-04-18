@@ -1,4 +1,5 @@
 
+import { InboxOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -69,15 +70,19 @@ export default class QualityCheckTable extends EntityScanViewTable {
     }
 
     createJudgeOkButton = () => {
-        return <Button key="OK" type="primary" className="table-button" icon="inbox" onClick={this.judgeOk}>
-                        OK
-                    </Button>
+        return (
+            <Button key="OK" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.judgeOk}>
+                            OK
+                        </Button>
+        );
     }
 
     createJudgeNgButton = () => {
-        return <Button key="NG" type="primary" className="table-button" icon="inbox" onClick={this.judgeNg}>
-                        NG
-                    </Button>
+        return (
+            <Button key="NG" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.judgeNg}>
+                            NG
+                        </Button>
+        );
     }
 }
 

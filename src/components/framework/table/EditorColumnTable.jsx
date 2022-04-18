@@ -1,4 +1,6 @@
-import { Table, Form } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Table } from 'antd';
 
 import './EditorColumnTable.scss';
 

@@ -1,7 +1,7 @@
 
 import  React, { Component } from 'react';
 
-import { Form, Input, Row, Col,Button} from 'antd';
+import { Input, Button, Form } from 'antd';
 import IconUtils from '@api/utils/IconUtils';
 import LanguageField from '@components/framework/field/LanguageField';
 import OrgField from '@components/framework/field/OrgField';
@@ -12,7 +12,7 @@ import { SessionContext } from '@api/Application';
 
 const FormItem = Form.Item;
 
-class UserLoginForm extends Component {
+export default class UserLoginForm extends Component {
 
     static displayName = 'UserLoginForm';
 
@@ -26,21 +26,15 @@ class UserLoginForm extends Component {
         };
     }
 
-    handleLogin = () => {
+    handleLogin = (values) => {
         let self = this;
-        const form = this.props.form;
-        form.validateFields((err, values) => {
-            if (err) {
-                return;
+        let object = {
+            user: values,
+            success: function(responseBody) {
+                self.props.handleOk(responseBody, values.org, values.language)
             }
-            let object = {
-                user: values,
-                success: function(responseBody) {
-                  self.props.handleOk(responseBody, values.org, values.language)
-                }
-            }
-            UserManagerRequest.sendLoginRequest(object);
-        });
+        }
+        UserManagerRequest.sendLoginRequest(object);
     }
 
     buildLoginForm = () => {
@@ -56,22 +50,30 @@ class UserLoginForm extends Component {
      * 重新登录或者验证用户的form表单。只具备相关填写密码的功能
      */
     buildCheckUserForm = () => {
-      const {getFieldDecorator} = this.props.form;    
       const formItemLayout = {
         labelCol: {span: 4},
         wrapperCol: {span: 18},
       };
       return (
-          <Form>
-            <FormItem {...formItemLayout} label={I18NUtils.getClientMessage(i18NCode.Username)}>
-              {getFieldDecorator('username', {initialValue: SessionContext.getUsername() })(
-                  <Input disabled/>)}
+          <Form initialValues={{
+                    username: {initialValue: SessionContext.getUsername()}
+                }}>
+                  
+            <FormItem {...formItemLayout} 
+                      name = "username" 
+                      label={I18NUtils.getClientMessage(i18NCode.Username)}>
+                
+                <Input disabled/>
             </FormItem>
-            <FormItem {...formItemLayout} label={I18NUtils.getClientMessage(i18NCode.Password)}>
-              {getFieldDecorator('password', {
-                rules: [{
-                    required: true
-                }],}) (<Input type="password"/>)}
+
+            <FormItem {...formItemLayout} 
+                      name = "password" 
+                      label={I18NUtils.getClientMessage(i18NCode.Password)}  
+                      rules={[{
+                          required: true
+                      }]}>
+
+                  <Input type="password"/>
             </FormItem>
           </Form> 
       )
@@ -80,79 +82,44 @@ class UserLoginForm extends Component {
     /**
      * 主页上的登录的表单。具备选择Org/语言以及登录按钮
      */
-    buildIndexLoginForm = () => {
-      const {getFieldDecorator} = this.props.form;    
-      return (
-        <Form onSubmit={this.handleLogin}>
-          <div style={styles.formItems}>
-            <Row>
-              <Col>
-                <FormItem>
-                  {getFieldDecorator('username',{
-                      initialValue:this.state.username,
-                      rules: [{
-                          required: true
-                      }]
-                  })(
-                      <Input prefix={IconUtils.buildIcon("icon-renyuan")} maxLength={20} />
-                    )}
+    buildIndexLoginForm = () =>{
+      return(<Form  initialValues={{ 
+                        username: this.state.username, 
+                        password: this.state.password, 
+                        org: this.state.org,
+                        language: this.state.language
+                    }}
+                    onFinish = {this.handleLogin}>
+              <div>
+                <FormItem name="username" rules={[{required: true}]}>
+                    <Input prefix={IconUtils.buildIcon("icon-renyuan")} maxLength={20}/>
                 </FormItem>
-              </Col>
-            </Row>
-  
-            <Row>
-              <Col>
-                <FormItem>
-                    {getFieldDecorator('password',{
-                          initialValue:this.state.password,
-                          rules: [{
-                              required: true
-                          }]
-                      })(
-                        <Input prefix={IconUtils.buildIcon("lock")}  type="password" />
-                      )}
+
+                <FormItem name="password" rules={[{required: true}]}>
+                    <Input prefix={IconUtils.buildIcon("lock")}  type="password"/>
                 </FormItem>
-              </Col>
-            </Row>
-            <Row >
-              <Col>
-                {IconUtils.buildIcon("icon-location", "", styles.selectIcon)}
-                <FormItem>
-                    {getFieldDecorator('org',{
-                          initialValue:this.state.org,
-                          rules: [{
-                              required: true
-                          }]
-                      })(
-                        <OrgField initialValue={this.state.org} style={styles.formSelect} />
-                      )}
+
+                <FormItem rules={[{required: true}]}>
+                    {IconUtils.buildIcon("icon-location", "", styles.selectIcon)}
+                    <FormItem name="org" rules={[{required: true}]} noStyle>
+                      <OrgField style={styles.formSelect} />
+                    </FormItem>
                 </FormItem>
-              </Col>
-            </Row>
-  
-            <Row >
-              <Col>
-                {IconUtils.buildIcon("icon-language", "", styles.selectIcon)}
-                <FormItem>
-                    {getFieldDecorator('language', {
-                        initialValue:this.state.language,
-                        rules: [{
-                          required: true
-                        }]
-                      })(
-                        <LanguageField initialValue={this.state.language} style={styles.formSelect}/>
-                      )}
+
+                <FormItem rules={[{required: true}]}>
+                    {IconUtils.buildIcon("icon-language", "", styles.selectIcon)}
+                    <FormItem name="language" rules={[{required: true}]} noStyle>
+                        <LanguageField style={styles.formSelect}/>
+                    </FormItem>
                 </FormItem>
-              </Col>
-            </Row>           
-            <Row >
-              <Button type="primary" style={styles.submitBtn} onClick={this.handleLogin}>
-                {I18NUtils.getClientMessage(i18NCode.Login)}
-              </Button>
-            </Row>
-          </div>
-        </Form> 
-      )
+
+                <FormItem>
+                    <Button type="primary" htmlType="submit" style={styles.submitBtn}>
+                      {I18NUtils.getClientMessage(i18NCode.Login)}
+                    </Button>
+                </FormItem>
+              </div>
+      </Form>);
     }
 
     render() {
@@ -165,6 +132,9 @@ class UserLoginForm extends Component {
 
 }
 const styles = {
+    formItems:{
+      
+    }, 
     formSelect: {
       marginLeft: "20px",
       width: "90%"
@@ -172,7 +142,7 @@ const styles = {
     selectIcon: {
       position: 'absolute',
       left: '-4px',
-      top: '5px',
+      top: '10px',
       color: '#999',
     },
   
@@ -194,4 +164,3 @@ const styles = {
       margin: '0 8px',
     },
   };
-export default Form.create({ name: 'login-form' })(UserLoginForm);

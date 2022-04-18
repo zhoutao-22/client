@@ -1,4 +1,5 @@
 
+import { InboxOutlined } from '@ant-design/icons';
 import { Button, Tag } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import { i18NCode } from '@api/const/i18n';
@@ -70,9 +71,11 @@ export default class PackMaterialLotTable extends EntityScanViewTable {
     }
 
     createPackageButton = () => {
-        return <Button key="receive" type="primary" className="table-button" icon="inbox" onClick={this.package}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnPackage)}
-                    </Button>
+        return (
+            <Button key="receive" type="primary" className="table-button" icon={<InboxOutlined />} onClick={this.package}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnPackage)}
+                        </Button>
+        );
     }
 
 }

@@ -3,6 +3,7 @@ import EntityListTable from "@components/framework/table/EntityListTable";
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { ImportOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 
 export default class VcApproveDocumentTable extends EntityListTable {
@@ -21,9 +22,11 @@ export default class VcApproveDocumentTable extends EntityListTable {
     }
 
     createApproveButton = () => {
-        return  <Button key="approve" type="primary" className="table-button" onClick={this.handledApprove} icon = "import-o">
-                         {I18NUtils.getClientMessage(i18NCode.BtnApprove)}
-                </Button>
+        return (
+            <Button key="approve" type="primary" className="table-button" onClick={this.handledApprove} icon = {<ImportOutlined />}>
+                             {I18NUtils.getClientMessage(i18NCode.BtnApprove)}
+                    </Button>
+        );
     }
 
     handledApprove = () => {

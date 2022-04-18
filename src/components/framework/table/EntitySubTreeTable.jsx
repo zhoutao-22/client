@@ -1,4 +1,5 @@
 import  React, { Component } from 'react';
+import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { Table, Button, Popconfirm } from 'antd';
 import I18NUtils from '@utils/I18NUtils';
 import { i18NCode } from '@const/i18n';
@@ -70,7 +71,7 @@ export default class EntitySubTreeTable extends Component {
 
     createButtonGroup = () => {
         let buttons = [];
-        buttons.push(<Button key="add" disabled={this.props.parentObject["readonly"]} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon="plus" onClick={() => this.handleAdd()}  href="javascript:;"> {I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>)
+        buttons.push(<Button key="add" disabled={this.props.parentObject["readonly"]} style={{marginRight:'1px', marginLeft:'10px'}} size="small" icon={<PlusOutlined />} onClick={() => this.handleAdd()}  href="javascript:;"> {I18NUtils.getClientMessage(i18NCode.BtnAdd)}</Button>)
         return buttons;
     }
 
@@ -110,16 +111,20 @@ export default class EntitySubTreeTable extends Component {
     }
 
     buildEditButton = (record) => {
-        return <Button key="edit" style={{marginRight:'1px'}} icon="edit" size="small" 
-                        onClick={() => this.handleEdit(record)} 
-                        disabled={this.state.parentReadOnly} href="javascript:;"/>
+        return (
+            <Button key="edit" style={{marginRight:'1px'}} icon={<EditOutlined />} size="small" 
+                            onClick={() => this.handleEdit(record)} 
+                            disabled={this.state.parentReadOnly} href="javascript:;"/>
+        );
     }
 
     buildDeletePopConfirm = (record) => {
-        return <Popconfirm key="delete" disabled={this.state.parentReadOnly} title={I18NUtils.getClientMessage(i18NCode.ConfirmDelete)} 
-                            onConfirm={() => this.handleDelete(record)}>
-                    <Button disabled={this.state.parentReadOnly} icon="delete" size="small" type="danger"/>
-                </Popconfirm>;
+        return (
+            <Popconfirm key="delete" disabled={this.state.parentReadOnly} title={I18NUtils.getClientMessage(i18NCode.ConfirmDelete)} 
+                                onConfirm={() => this.handleDelete(record)}>
+                        <Button disabled={this.state.parentReadOnly} icon={<DeleteOutlined />} size="small" type="danger"/>
+                    </Popconfirm>
+        );
     }
     
     handleDelete = (record) => {

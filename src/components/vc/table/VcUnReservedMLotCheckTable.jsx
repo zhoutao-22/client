@@ -3,6 +3,7 @@ import EntityListCheckTable from "@components/framework/table/EntityListCheckTab
 import { i18NCode } from "@const/i18n";
 import I18NUtils from "@utils/I18NUtils";
 import NoticeUtils from "@utils/NoticeUtils";
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button, Input, Tag } from "antd";
 
 /**
@@ -25,9 +26,11 @@ export default class VcUnReservedMLotCheckTable extends EntityListCheckTable {
     }
 
     createUnReserved = () => {
-        return <Button key="unReserved" type="primary" className="table-button" icon="file-excel" onClick={this.unReserved}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnUnReserved)}
-                    </Button>
+        return (
+            <Button key="unReserved" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.unReserved}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnUnReserved)}
+                        </Button>
+        );
     }
 
     unReserved =()=>{

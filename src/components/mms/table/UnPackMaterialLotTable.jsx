@@ -1,4 +1,5 @@
 
+import { DropboxOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import I18NUtils from '@api/utils/I18NUtils';
 import { i18NCode } from '@api/const/i18n';
@@ -73,15 +74,19 @@ export default class UnPackMaterialLotTable extends EntityScanViewTable {
 
 
     createUnPackageAllButton = () => {
-        return <Button key="unpackageAll" type="primary" className="table-button" icon="dropbox" onClick={this.unPackageAll}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnUnPackageAll)}
-                    </Button>
+        return (
+            <Button key="unpackageAll" type="primary" className="table-button" icon={<DropboxOutlined />} onClick={this.unPackageAll}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnUnPackageAll)}
+                        </Button>
+        );
     }
 
     createUnPackageButton = () => {
-        return <Button key="unpackage" type="primary" className="table-button" icon="dropbox" onClick={this.unPackagePartial}>
-                        {I18NUtils.getClientMessage(i18NCode.BtnUnPackage)}
-                    </Button>
+        return (
+            <Button key="unpackage" type="primary" className="table-button" icon={<DropboxOutlined />} onClick={this.unPackagePartial}>
+                            {I18NUtils.getClientMessage(i18NCode.BtnUnPackage)}
+                        </Button>
+        );
     }
 
 }

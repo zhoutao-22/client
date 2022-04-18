@@ -1,9 +1,11 @@
-import { Input, InputNumber, DatePicker, Switch,Form, Tag, Button, Upload } from 'antd';
+import { CheckOutlined, CloseOutlined, UploadOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, InputNumber, DatePicker, Switch, Tag, Button, Upload } from 'antd';
 import {SessionContext} from '@api/Application'
 import {Language, DateFormatType, DefaultRowKey} from "@const/ConstDefine";
 import RefListField from '@components/framework/field/RefListField';
 import RefTableField from '@components/framework/field/RefTableField';
-import {Icon} from 'antd';
 import locale from 'antd/lib/date-picker/locale/zh_CN';
 import PropertyUtils from '@utils/PropertyUtils';
 import I18NUtils from '@utils/I18NUtils';
@@ -189,7 +191,7 @@ export default class Field {
         // 当这个table携带了refresh方法时候，就可以直接支持上传
         if (this.table.refresh && Number.isInteger(record[DefaultRowKey])) {
             columnRender.push(<Upload data={record} customRequest={(option) => this.upload(option)} showUploadList={false} >
-                                <Button shape="round" icon="upload" size="small" href="javascript:;"></Button>
+                                <Button shape="round" icon={<UploadOutlined />} size="small" href="javascript:;"></Button>
                             </Upload>);
         }
         return columnRender;
@@ -292,7 +294,7 @@ export default class Field {
         } else if (this.displayType == DisplayType.referenceTable) {
             return <RefTableField onBlur={onBlur} initialValue={initialValue} field={this} form={this.form} disabled={this.disabled} afterChange={e => onPressEnter ? onPressEnter(e, this) : undefined}/>
         } else if (this.displayType == DisplayType.radio) {
-            return <Switch checkedChildren={<Icon type="check" />} unCheckedChildren={<Icon type="close" />} disabled={this.disabled}/>
+            return <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} disabled={this.disabled}/>;
         }
     }
     

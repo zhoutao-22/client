@@ -1,5 +1,6 @@
 
 import EntityScanViewTable from '@components/framework/table/EntityScanViewTable';
+import { FileExcelOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import NoticeUtils from '@utils/NoticeUtils';
 import I18NUtils from '@utils/I18NUtils';
@@ -49,9 +50,11 @@ export default class GcReTestMLotTable extends EntityScanViewTable {
      * 发料
      */
     createReTest = () => {
-        return <Button key="reTest" type="primary" className="table-button" icon="file-excel" onClick={this.reTest}>
-                        发料
-                    </Button>
+        return (
+            <Button key="reTest" type="primary" className="table-button" icon={<FileExcelOutlined />} onClick={this.reTest}>
+                            发料
+                        </Button>
+        );
     }
 
 }

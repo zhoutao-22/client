@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input, Row, Col, Tabs } from 'antd';
+
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { Input, Row, Col, Tabs } from 'antd';
 import * as PropTypes from 'prop-types';
 import Field from '@api/dto/ui/Field';
 import Tab from '@api/dto/ui/Tab';
